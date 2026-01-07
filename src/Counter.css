@@ -1,0 +1,57 @@
+.counter {
+  padding: 2rem;
+  background-color: #20232a;
+  border-radius: 8px;
+  min-width: 300px;
+}
+
+.counter h2 {
+  color: #61dafb;
+  margin-top: 0;
+}
+
+.counter-display {
+  font-size: 4rem;
+  font-weight: bold;
+  margin: 2rem 0;
+  color: #61dafb;
+}
+
+.counter-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.btn {
+  padding: 1rem 2rem;
+  font-size: 1.5rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-weight: bold;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}
+
+.btn-increment {
+  background-color: #4caf50;
+  color: white;
+}
+
+.btn-decrement {
+  background-color: #f44336;
+  color: white;
+}
+
+.btn-reset {
+  background-color: #2196f3;
+  color: white;
+}
+
+.btn:active {
+  transform: scale(0.95);
+}

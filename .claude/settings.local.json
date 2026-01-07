@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(if [ -f \"README.md\" ])",
+      "Bash(then cat README.md)",
+      "Bash(else echo \"File does not exist\")",
+      "Bash(fi)"
+    ]
+  }
+}

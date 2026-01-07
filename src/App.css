@@ -1,0 +1,36 @@
+.App {
+  text-align: center;
+  min-height: 100vh;
+  background-color: #282c34;
+  color: white;
+}
+
+.App-header {
+  padding: 2rem;
+  background-color: #20232a;
+}
+
+.App-header h1 {
+  margin: 0 0 1rem 0;
+  color: #61dafb;
+}
+
+.App-main {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.info-section {
+  max-width: 600px;
+  padding: 2rem;
+  background-color: #20232a;
+  border-radius: 8px;
+}
+
+.info-section h2 {
+  color: #61dafb;
+  margin-top: 0;
+}
