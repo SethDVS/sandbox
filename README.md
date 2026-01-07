@@ -38,5 +38,3 @@ This app is designed to be a simple codebase for testing code review tools. Feel
 - Add new components
 - Refactor code structure
 - Introduce bugs to test detection
-
-Perfect for validating AI code reviewers and testing change detection! 
