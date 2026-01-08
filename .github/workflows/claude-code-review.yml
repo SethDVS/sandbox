@@ -30,3 +30,4 @@ jobs:
           trigger_phrase: "@claude"
           use_sticky_comment: false
           include_fix_links: true
+          prompt: ${{ github.event_name == 'pull_request' && '/review' || '' }}
