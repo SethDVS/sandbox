@@ -14,7 +14,7 @@ function App() {
         <Counter />
 
         <section className="info-section">
-          <h2>About This App</h2>
+          <h2>About This Bomboclaat App</h2>
           <p>This is a minimal React application created for testing purposes.</p>
           <p>Feel free to modify components and test the AI code reviewer!</p>
         </section>
