@@ -9,8 +9,9 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-    outputs:
-      final_message: ${{ steps.run_codex.outputs.final-message }}
+      pull-requests: write
+    env:
+      GH_TOKEN: ${{ github.token }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v5
@@ -35,7 +36,7 @@ jobs:
             PR Title: ${{ github.event.pull_request.title }}
             PR Author: ${{ github.event.pull_request.user.login }}
 
-            To see the changes, run:
+            First, get the diff to see what changed:
             git diff ${{ github.event.pull_request.base.sha }}...${{ github.event.pull_request.head.sha }}
 
             Please perform a comprehensive code review covering:
@@ -69,29 +70,15 @@ jobs:
                - Documentation where needed
                - Test coverage considerations
 
-            Format your review as a structured markdown comment with clear sections.
-            Include specific file paths and line numbers for each finding.
-            Provide actionable suggestions for improvements.
-            End with a summary and overall assessment.
+            IMPORTANT: For each finding, post an inline comment on the specific file and line using:
+            gh api repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/comments \
+              -f body="Your comment here" \
+              -f commit_id="${{ github.event.pull_request.head.sha }}" \
+              -f path="path/to/file.ext" \
+              -f line=LINE_NUMBER \
+              -f side="RIGHT"
 
-  post-review-comment:
-    runs-on: ubuntu-latest
-    needs: codex-review
-    if: needs.codex-review.outputs.final_message != ''
-    permissions:
-      pull-requests: write
-    steps:
-      - name: Post Codex Review Comment
-        uses: actions/github-script@v7
-        env:
-          CODEX_FINAL_MESSAGE: ${{ needs.codex-review.outputs.final_message }}
-        with:
-          github-token: ${{ github.token }}
-          script: |
-            const body = `## 🤖 Codex Code Review\n\n${process.env.CODEX_FINAL_MESSAGE}`;
-            await github.rest.issues.createComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: context.payload.pull_request.number,
-              body: body,
-            });
+            After posting all inline comments, post a summary comment with:
+            gh pr comment ${{ github.event.pull_request.number }} --body "## 🤖 Codex Code Review
+
+            [Your overall summary here with key findings and recommendations]"
