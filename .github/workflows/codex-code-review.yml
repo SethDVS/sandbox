@@ -30,7 +30,7 @@ jobs:
         uses: openai/codex-action@v1
         with:
           openai-api-key: ${{ secrets.OPENAI_API_KEY }}
-          sandbox: danger-full-access
+          sandbox: full-auto
           prompt: |
             You are performing a full code review for PR #${{ github.event.pull_request.number }} in ${{ github.repository }}.
 
