@@ -72,7 +72,14 @@ jobs:
                - Documentation where needed
                - Test coverage considerations
 
-            IMPORTANT: For each finding, post an inline comment on the specific file and line using:
+            IMPORTANT: Follow this exact order:
+
+            1. FIRST, post EXACTLY ONE summary comment with your overall review:
+            gh pr comment ${{ github.event.pull_request.number }} --body "## 🤖 Codex Code Review
+
+            [Your overall summary here with key findings and recommendations]"
+
+            2. THEN, for each specific finding, post an inline comment on the file and line using:
             gh api repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/comments \
               -f body="Your comment here" \
               -f commit_id="${{ github.event.pull_request.head.sha }}" \
@@ -80,7 +87,4 @@ jobs:
               -f line=LINE_NUMBER \
               -f side="RIGHT"
 
-            After posting all inline comments, post a summary comment with:
-            gh pr comment ${{ github.event.pull_request.number }} --body "## 🤖 Codex Code Review
-
-            [Your overall summary here with key findings and recommendations]"
+            IMPORTANT: Only run the gh pr comment command ONCE at the beginning. Do not post duplicate summary comments.
