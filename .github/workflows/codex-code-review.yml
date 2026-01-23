@@ -80,7 +80,9 @@ jobs:
               -f line=LINE_NUMBER \
               -f side="RIGHT"
 
-            After posting all inline comments, post a summary comment with:
+            After posting all inline comments, post EXACTLY ONE summary comment (do not post multiple summary comments) with:
             gh pr comment ${{ github.event.pull_request.number }} --body "## 🤖 Codex Code Review
 
             [Your overall summary here with key findings and recommendations]"
+
+            IMPORTANT: Only run the gh pr comment command ONCE at the very end. Do not post duplicate summary comments.
