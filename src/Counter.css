@@ -55,3 +55,32 @@
 .btn:active {
   transform: scale(0.95);
 }
+
+.step-control {
+  margin-top: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.step-control label {
+  font-size: 1rem;
+  color: #61dafb;
+}
+
+.step-input {
+  width: 80px;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 2px solid #61dafb;
+  border-radius: 4px;
+  background-color: #282c34;
+  color: white;
+  text-align: center;
+}
+
+.step-input:focus {
+  outline: none;
+  border-color: #4caf50;
+}
