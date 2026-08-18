@@ -27,8 +27,16 @@ npm build
 ## What's Included
 
 - **App Component**: Main application component with header and layout
-- **Counter Component**: Interactive counter with increment, decrement, and reset functionality
+- **Counter Component**: Interactive counter with increment, decrement, reset, and undo
+- **useCounter Hook**: Reusable counter state logic with step sizes and range clamping
 - **Basic Styling**: Simple CSS for a clean, dark-themed UI
+
+### Counter Features
+
+- Selectable step size (1, 5, or 10)
+- Values clamped to the range -100 to 100, with the +/- buttons disabled at the bounds
+- Undo, which walks back through the history of previous values
+- Reset, which clears the count, step size, and history
 
 ## Purpose
 
